@@ -24,6 +24,11 @@ monitor <-
       job_name <- infile
     }
     lines <- readLines(infile)
+
+    # extract expressions
+    expressions <-extract_expressions(lines)
+
+    # generate Job ID
     job_id <- NA
     res <- monitauR::init(API_URL, job_name)
     job_id <- httr::content(res)[[1]]$id
@@ -31,9 +36,9 @@ monitor <-
       stop('job_id is not defined')
     }
     message(sprintf('Job %s: --- Initialising ---', job_id))
+
     # extract
     futures <- extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
-    expressions <-extract_expressions(lines)
     # combine
     expressions <- c(expressions, futures)
     # sort
