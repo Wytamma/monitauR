@@ -77,9 +77,11 @@ Job 1: --- Completed ---
 
 ## explanation 
 
-There is a plumber api running on PORT 8000 that receives and logs requests from `monitauR::monitor`. The script file has a special comment syntax (#>) that tells `monitauR::monitor` when to send a logging request. 
+There is a [plumber api](https://www.rplumber.io/) running on PORT 8000 that receives and logs requests from `monitauR::monitor`. The script infile (`example_scripts/square.R`) has a special comment syntax (`#>`) that tells `monitauR::monitor` when to send a logging request. 
 
-`example_scripts/square.R'`
+```bash
+cat example_scripts/square.R
+```
 
 ```R
 #> Setting up the square function
@@ -90,12 +92,12 @@ square <- function(x) {
 square(5)
 ```
 
-While evaluating the script when the special comment (#>) is reached a request is sent to the server telling it to log the step.
+While evaluating the script when the special comment (`#>`) is reached a request is sent to the server telling it to log the step.
 
 ### lifecycle of a monitauR script
 
 1. The script is parsed and the expressions are extracted
-2. Job ID is generated (status set to Initialising)
+2. Job ID is generated (status set to initialising)
 3. A future is created (using the Job ID) for each special comment step
 4. Job status is set to running
 5. Script is evaluated and futures are run in sequential order 
