@@ -18,7 +18,7 @@ Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
 ```
 ```bash
-curl 'http://localhost:6354/jobs' | json_pp
+curl 'http://localhost:8000/jobs' | json_pp
 ```
 ```json
 [
@@ -32,7 +32,7 @@ curl 'http://localhost:6354/jobs' | json_pp
 ]
 ```
 ```bash
-curl 'http://localhost:6354/steps' | json_pp
+curl 'http://localhost:8000/steps' | json_pp
 
 ```
 ```json
