@@ -106,7 +106,7 @@ While evaluating the script when the special comment (`#>`) is reached a request
 
 ## monitauR-api
 
-Details for the api can be found [here](https://github.com/Wytamma/monitauR/tree/master/monitauR-api). However, anyone could make there own API and replace the `API_URL` pram with their own.
+Details for the plumber api can be found [here](https://github.com/Wytamma/monitauR/tree/master/monitauR-api). However, anyone could make there own API and replace the `API_URL` pram with their own.
 
 ## docker dev env
 
