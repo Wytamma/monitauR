@@ -65,7 +65,7 @@ Job 1: --- Completed ---
 
 ## Explanation 
 
-There is a plumber api running on PORT 8000 that receves and logs requests from `monitauR::monitor`. The script file have a special comment syntax (#>) that tells `monitauR::monitor` when to send a logging request. 
+There is a plumber api running on PORT 8000 that receives and logs requests from `monitauR::monitor`. The script file has a special comment syntax (#>) that tells `monitauR::monitor` when to send a logging request. 
 
 `example_scripts/square.R'`
 
@@ -92,7 +92,7 @@ While evaluating the script when the special comment (#>) is reached a request i
 
 ## monitauR-api
 
-Details for the api can be found [here](/). However, anyone could make there own API and replace the `API_URL` pram with their own.
+Details for the api can be found [here](https://github.com/Wytamma/monitauR/tree/master/monitauR-api). However, anyone could make there own API and replace the `API_URL` pram with their own.
 
 ## docker dev env
 
