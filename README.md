@@ -63,7 +63,7 @@ Job 1: --- Completed ---
 [1] "2020-09-07 06:22:49"
 ```
 
-## Explanation 
+## explanation 
 
 There is a plumber api running on PORT 8000 that receives and logs requests from `monitauR::monitor`. The script file has a special comment syntax (#>) that tells `monitauR::monitor` when to send a logging request. 
 
