@@ -6,12 +6,17 @@ A package to easily monitor the progress of your R scripts. Progress is register
 
 ```R
 > monitauR::monitor('example_scripts/square.R', API_URL='http://localhost:8000/')
+```
+```
 Job 1: --- Initialising ---
 Job 1: Setting up the square function
 Job 1: Computing the square
 Job 1: --- Completed ---
-
+```
+```R
 > httr::content(httr::GET('http://localhost:8000/jobs'))
+```
+```R
 [[1]]
 [[1]]$name
 [1] "example_scripts/square.R"
@@ -27,8 +32,12 @@ Job 1: --- Completed ---
 
 [[1]]$updated
 [1] "2020-09-07 06:22:48"
-
+```
+```R
 > httr::content(httr::GET('http://localhost:8000/steps'))
+
+```
+```R
 [[1]]
 [[1]]$msg
 [1] "Setting up the square function"
