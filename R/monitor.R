@@ -26,6 +26,7 @@ monitor <-
     if (endsWith(API_URL, '/')) {
       API_URL <- substr(API_URL, 0, nchar(API_URL)-1)
     }
+
     # read script
     lines <- readLines(infile)
 
@@ -41,15 +42,17 @@ monitor <-
     }
     message(sprintf('Job %s: --- Initialising ---', job_id))
 
-    # extract
+    # extract futures
     futures <- extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
+
     # combine
     expressions <- c(expressions, futures)
+
     # sort
     expressions <- expressions[order(names(expressions))]
+
     # eval
-    res <- monitauR::start(API_URL, job_id)
-    print(res)
+    monitauR::start(API_URL, job_id)
     evaluate_expressions(expressions)
     monitauR::end(API_URL, job_id)
     message(sprintf('Job %s: --- Completed ---', job_id))
