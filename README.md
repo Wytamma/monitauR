@@ -11,10 +11,10 @@ A package to easily and remotely monitor the progress of your R scripts.
 )
 ```
 ```
-Job 1: --- Initialising ---
+Job 1: --- Initialised ---
 Job 1: Setting up the square function
 Job 1: Computing the square
-Job 1: --- Completed ---
+Job 1: --- Finished ---
 ```
 ```R
 > httr::content(httr::GET('http://localhost:8000/jobs'))
@@ -97,7 +97,7 @@ While evaluating the script when the special comment (`#>`) is reached a request
 ### lifecycle of a monitauR script
 
 1. The script is parsed and the expressions are extracted
-2. Job ID is generated (status set to initialising)
+2. Job ID is generated (status set to initialised)
 3. A future is created (using the Job ID) for each special comment step
 4. Job status is set to running
 5. Script is evaluated and futures are run in sequential order 

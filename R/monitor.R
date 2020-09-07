@@ -40,7 +40,7 @@ monitor <-
     if (is.na(job_id)) {
       stop('job_id is not defined')
     }
-    message(sprintf('Job %s: --- Initialising ---', job_id))
+    message(sprintf('Job %s: --- Initialised ---', job_id))
 
     # extract futures
     futures <- extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
@@ -55,6 +55,6 @@ monitor <-
     monitauR::start(API_URL, job_id)
     evaluate_expressions(expressions)
     monitauR::end(API_URL, job_id)
-    message(sprintf('Job %s: --- Completed ---', job_id))
+    message(sprintf('Job %s: --- Finished ---', job_id))
     invisible()
   }

@@ -26,7 +26,7 @@ function(msg = "") {
   job <-
     list(
       name = msg,
-      status = 'initialising',
+      status = 'initialised',
       id = nrow(jobs) + 1,
       created = as.character(Sys.time()),
       updated = as.character(Sys.time())
