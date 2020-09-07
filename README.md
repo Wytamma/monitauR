@@ -5,7 +5,10 @@ A package to easily and remotely monitor the progress of your R scripts.
 ## example 
 
 ```R
-> monitauR::monitor('example_scripts/square.R', API_URL='http://localhost:8000/')
+> monitauR::monitor(
+  infile = 'example_scripts/square.R', 
+  API_URL = 'http://localhost:8000/'
+)
 ```
 ```
 Job 1: --- Initialising ---
