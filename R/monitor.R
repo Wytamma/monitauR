@@ -23,6 +23,10 @@ monitor <-
     if (is.na(job_name)) {
       job_name <- infile
     }
+    if (endsWith(API_URL, '/')) {
+      API_URL <- substr(API_URL, 0, nchar(API_URL)-1)
+    }
+    # read script
     lines <- readLines(infile)
 
     # extract expressions
@@ -44,7 +48,8 @@ monitor <-
     # sort
     expressions <- expressions[order(names(expressions))]
     # eval
-    monitauR::start(API_URL, job_id)
+    res <- monitauR::start(API_URL, job_id)
+    print(res)
     evaluate_expressions(expressions)
     monitauR::end(API_URL, job_id)
     message(sprintf('Job %s: --- Completed ---', job_id))
