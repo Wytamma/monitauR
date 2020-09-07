@@ -13,8 +13,8 @@ Rscript -e "monitauR::monitor('example_scripts/square.R', API_URL='http://localh
 ```
 ```
 Job 1: --- Initialised ---
-Job 1: Setting up the square function
-Job 1: Computing the square
+Job 1: Setting up the square function (1/2)
+Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
 ```
 ```bash
