@@ -1,4 +1,3 @@
-
 #' @export
 init <- function(API_URL, job_name) {
   URL <- sprintf('%s/jobs', API_URL)
@@ -33,6 +32,7 @@ end <- function(API_URL, job_id) {
 #' @export
 error <- function(API_URL, job_id, msg) {
   URL <- sprintf('%s/jobs/%s/error', API_URL, job_id)
-  res <- httr::POST(URL, query = list(msg = e$message))
+  res <- httr::POST(URL, query = list(msg = msg))
+  print(res)
   invisible(res)
 }

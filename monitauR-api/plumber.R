@@ -35,7 +35,7 @@ function(msg = "") {
     jobs %>% add_row(
       name = job$name,
       status = job$status,
-      error = NA,
+      error = '',
       id = job$id,
       created = job$created,
       updated = job$updated
@@ -52,6 +52,8 @@ set_status_of_job <- function(job_id, status) {
   jobs[jobs$id == job_id, 'status'] <<- status
   jobs[jobs$id == job_id, 'updated'] <<- as.character(Sys.time())
 }
+
+
 
 #* Set job status to running
 #* @post /jobs/<id:int>/start
@@ -118,7 +120,6 @@ function(id) {
 }
 
 create_new_step <- function(job_id, msg) {
-  print(steps)
   step <-
     list(
       msg = msg,

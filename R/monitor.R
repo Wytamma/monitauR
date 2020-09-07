@@ -18,20 +18,19 @@ monitor <-
   function(infile,
            job_name = NA,
            API_URL,
-           comment_syntax = "#>"
-           ) {
+           comment_syntax = "#>") {
     if (is.na(job_name)) {
       job_name <- infile
     }
     if (endsWith(API_URL, '/')) {
-      API_URL <- substr(API_URL, 0, nchar(API_URL)-1)
+      API_URL <- substr(API_URL, 0, nchar(API_URL) - 1)
     }
 
     # read script
     lines <- readLines(infile)
 
     # extract expressions
-    expressions <-extract_expressions(lines)
+    expressions <- extract_expressions(lines)
 
     # generate Job ID
     job_id <- NA
@@ -43,7 +42,8 @@ monitor <-
     message(sprintf('Job %s: --- Initialised ---', job_id))
 
     # extract futures
-    futures <- extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
+    futures <-
+      extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
 
     # combine
     expressions <- c(expressions, futures)
@@ -53,7 +53,7 @@ monitor <-
 
     # eval
     monitauR::start(API_URL, job_id)
-    evaluate_expressions(expressions)
+    evaluate_expressions(expressions, job_id)
     monitauR::end(API_URL, job_id)
     message(sprintf('Job %s: --- Finished ---', job_id))
     invisible()
