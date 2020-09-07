@@ -8,11 +8,8 @@ devtools::install_github("wytamma/monitauR")
 
 ## example 
 
-```R
-> monitauR::monitor(
-  infile = 'example_scripts/square.R', 
-  API_URL = 'http://localhost:8000/'
-)
+```bash
+Rscript -e "monitauR::monitor('example_scripts/square.R', API_URL='http://localhost:8000/')"
 ```
 ```
 Job 1: --- Initialised ---
@@ -20,63 +17,41 @@ Job 1: Setting up the square function
 Job 1: Computing the square
 Job 1: --- Finished ---
 ```
-```R
-> httr::content(httr::GET('http://localhost:8000/jobs'))
+```bash
+curl 'http://localhost:6354/jobs' | json_pp
 ```
-```R
-[[1]]
-[[1]]$name
-[1] "example_scripts/square.R"
-
-[[1]]$status
-[1] "finished"
-
-[[1]]$id
-[1] 1
-
-[[1]]$created
-[1] "2020-09-07 06:22:48"
-
-[[1]]$updated
-[1] "2020-09-07 06:22:48"
+```json
+[
+   {
+      "created" : "2020-09-07 14:49:35",
+      "id" : 1,
+      "name" : "example_scripts/square.R",
+      "status" : "finished",
+      "updated" : "2020-09-07 14:49:35"
+   }
+]
 ```
-```R
-> httr::content(httr::GET('http://localhost:8000/steps'))
+```bash
+curl 'http://localhost:6354/steps' | json_pp
 
 ```
-```R
-[[1]]
-[[1]]$msg
-[1] "Setting up the square function"
-
-[[1]]$job_id
-[1] 1
-
-[[1]]$id
-[1] 1
-
-[[1]]$created
-[1] "2020-09-07 06:22:49"
-
-[[1]]$updated
-[1] "2020-09-07 06:22:49"
-
-
-[[2]]
-[[2]]$msg
-[1] "Computing the square"
-
-[[2]]$job_id
-[1] 1
-
-[[2]]$id
-[1] 2
-
-[[2]]$created
-[1] "2020-09-07 06:22:49"
-
-[[2]]$updated
-[1] "2020-09-07 06:22:49"
+```json
+[
+   {
+      "created" : "2020-09-07 14:49:35",
+      "id" : 1,
+      "job_id" : 1,
+      "msg" : "Setting up the square function",
+      "updated" : "2020-09-07 14:49:35"
+   },
+   {
+      "created" : "2020-09-07 14:49:35",
+      "id" : 2,
+      "job_id" : 1,
+      "msg" : "Computing the square",
+      "updated" : "2020-09-07 14:49:35"
+   }
+]
 ```
 
 ## explanation 
