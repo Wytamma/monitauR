@@ -17,7 +17,7 @@ Job 1: --- Completed ---
 [1] "example_scripts/square.R"
 
 [[1]]$status
-[1] "initialising"
+[1] "finished"
 
 [[1]]$id
 [1] 1
