@@ -1,6 +1,6 @@
 # monitauR <a href='https://github.com/wytamma'><img src='images/logo.png' align="right" height="210" /></a>
 
-A package to easily monitor the progress of your R scripts. Progress is registered with a remote API using a special comment syntax.
+A package to easily and remotely monitor the progress of your R scripts.
 
 ## example 
 
