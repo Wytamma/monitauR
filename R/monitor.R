@@ -9,18 +9,18 @@
 #' complete. If the script errors the error will also be logged with the server.
 #'
 #' @param infile Path to the input file
-#' @param job_name Name of job (defaults to infile)
+#' @param name Name of job (defaults to infile)
 #' @param comment_syntax Special comment syntax (defaults to #>)
 #' @param API_URL Base url of the remote server
 #' @return The result of the script.
 #' @export
 monitor <-
   function(infile,
-           job_name = NA,
+           name = NA,
            API_URL = "https://monitaur-api.herokuapp.com",
            comment_syntax = "#>") {
-    if (is.na(job_name)) {
-      job_name <- infile
+    if (is.na(name)) {
+      name <- infile
     }
     if (endsWith(API_URL, '/')) {
       API_URL <- substr(API_URL, 0, nchar(API_URL) - 1)
@@ -34,7 +34,7 @@ monitor <-
 
     # generate Job ID
     job_id <- NA
-    res <- monitauR::init(API_URL, job_name)
+    res <- monitauR::init(API_URL, name)
     job_id <- httr::content(res)[[1]]$id
     if (is.na(job_id)) {
       stop('job_id is not defined')

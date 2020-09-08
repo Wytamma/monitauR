@@ -1,3 +1,7 @@
 .Rproj.user
 images/.DS_Store
 .DS_Store
+_site/
+_tmp/
+node_modules/
+package-lock.json
