@@ -17,7 +17,7 @@
 monitor <-
   function(infile,
            job_name = NA,
-           API_URL,
+           API_URL = "https://monitaur-api.herokuapp.com",
            comment_syntax = "#>") {
     if (is.na(job_name)) {
       job_name <- infile
