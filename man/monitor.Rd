@@ -4,16 +4,16 @@
 \alias{monitor}
 \title{Monitor the progress of a script}
 \usage{
-monitor(infile, job_name = NA, comment_syntax = "#>", API_URL)
+monitor(infile, job_name = NA, API_URL, comment_syntax = "#>")
 }
 \arguments{
 \item{infile}{Path to the input file}
 
 \item{job_name}{Name of job (defaults to infile)}
 
-\item{comment_syntax}{Special comment syntax (defaults to #>)}
-
 \item{API_URL}{Base url of the remote server}
+
+\item{comment_syntax}{Special comment syntax (defaults to #>)}
 }
 \value{
 The result of the script.
