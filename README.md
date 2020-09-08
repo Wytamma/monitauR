@@ -9,7 +9,7 @@ devtools::install_github("wytamma/monitauR")
 ## example 
 
 ```bash
-Rscript -e "monitauR::monitor('example_scripts/square.R', API_URL='http://localhost:8000/')"
+Rscript -e "monitauR::monitor('example_scripts/square.R')"
 ```
 ```
 Job 1: --- Initialised ---
@@ -18,7 +18,7 @@ Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
 ```
 ```bash
-curl 'http://localhost:8000/jobs' | json_pp
+curl 'https://monitaur-api.herokuapp.com/jobs' | json_pp
 ```
 ```json
 [
@@ -32,7 +32,7 @@ curl 'http://localhost:8000/jobs' | json_pp
 ]
 ```
 ```bash
-curl 'http://localhost:8000/steps' | json_pp
+curl 'https://monitaur-api.herokuapp.com/steps' | json_pp
 
 ```
 ```json
@@ -56,7 +56,7 @@ curl 'http://localhost:8000/steps' | json_pp
 
 ## explanation 
 
-There is a [plumber api](https://www.rplumber.io/) running on PORT 8000 that receives and logs requests from `monitauR::monitor`. The script infile (`example_scripts/square.R`) has a special comment syntax (`#>`) that tells `monitauR::monitor` when to send a logging request. 
+There is a [plumber api](https://www.rplumber.io/) running on [https://monitaur-api.herokuapp.com/](https://monitaur-api.herokuapp.com/) that receives and logs requests from `monitauR::monitor`. The script infile (`example_scripts/square.R`) has a special comment syntax (`#>`) that tells `monitauR::monitor` when to send a logging request. 
 
 ```bash
 cat example_scripts/square.R
@@ -85,7 +85,7 @@ While evaluating the script when the special comment (`#>`) is reached a request
 
 ## monitauR-api
 
-Details for the plumber api can be found [here](https://github.com/Wytamma/monitauR/tree/master/monitauR-api). However, anyone could make there own API and replace the `API_URL` pram with their own.
+Details for the default plumber api can be found [here](https://github.com/Wytamma/monitauR-api). However, the default api is shared and anyone can add to or edit the data on there, and the data might be wiped at any point. If you want your own private server you could deploy your own API and replace the `API_URL` pram in `monitauR::monitor`.
 
 ## docker dev env
 
