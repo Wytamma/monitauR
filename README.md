@@ -87,6 +87,10 @@ While evaluating the script when the special comment (`#<`) is reached a request
 
 Details for the default plumber api can be found [here](https://github.com/Wytamma/monitauR-api). However, the default api is shared and anyone can add to or edit the data on there, and the data might be wiped at any point. If you want your own private server you could deploy your own API and replace the `API_URL` pram in `monitauR::monitor`.
 
+## monitauR-webapp
+
+Jobs can be monitored via `/jobs` section of webapp found at [https://wytamma.github.io/monitauR-webapp](https://wytamma.github.io/monitauR-webapp). Details for the webapp can be found [here](https://github.com/Wytamma/monitauR-webapp). 
+
 ## docker dev env
 
 ```bash
