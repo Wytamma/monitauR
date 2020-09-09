@@ -4,7 +4,7 @@
 \alias{monitor}
 \title{Monitor the progress of a script}
 \usage{
-monitor(infile, job_name = NA, API_URL, comment_syntax = "#>")
+monitor(infile, job_name = NA, API_URL, comment_syntax = "#<")
 }
 \arguments{
 \item{infile}{Path to the input file}
@@ -13,7 +13,7 @@ monitor(infile, job_name = NA, API_URL, comment_syntax = "#>")
 
 \item{API_URL}{Base url of the remote server}
 
-\item{comment_syntax}{Special comment syntax (defaults to #>)}
+\item{comment_syntax}{Special comment syntax (defaults to #<)}
 }
 \value{
 The result of the script.
@@ -21,7 +21,7 @@ The result of the script.
 \description{
 This function is used to monitor the progress of a script. A script file
 passed to the function will be evaluated and any comments with the
-\code{comment_syntax} #> (default) will be sent to a remote sever (\code{API_URL}) for
+\code{comment_syntax} #< (default) will be sent to a remote sever (\code{API_URL}) for
 logging. Before the script is evaluated the job will be initialised with the
 remote server and a Job ID is generated. That Job ID is used to link each
 step with the script. Once the script is finished the Job satus will be set to

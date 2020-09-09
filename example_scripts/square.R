@@ -1,6 +1,6 @@
-#> Setting up the square function
+#< Setting up the square function
 square <- function(x) {
   x*x
 }
-#> Computing the square
+#< Computing the square
 square(5)

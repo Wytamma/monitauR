@@ -2,7 +2,7 @@
 #'
 #' This function is used to monitor the progress of a script. A script file
 #' passed to the function will be evaluated and any comments with the
-#' `comment_syntax` #> (default) will be sent to a remote sever (`API_URL`) for
+#' `comment_syntax` #< (default) will be sent to a remote sever (`API_URL`) for
 #' logging. Before the script is evaluated the job will be initialised with the
 #' remote server and a Job ID is generated. That Job ID is used to link each
 #' step with the script. Once the script is finished the Job satus will be set to
@@ -10,7 +10,7 @@
 #'
 #' @param infile Path to the input file
 #' @param name Name of job (defaults to infile)
-#' @param comment_syntax Special comment syntax (defaults to #>)
+#' @param comment_syntax Special comment syntax (defaults to #<)
 #' @param API_URL Base url of the remote server
 #' @return The result of the script.
 #' @export
@@ -18,7 +18,7 @@ monitor <-
   function(infile,
            name = NA,
            API_URL = "https://monitaur-api.herokuapp.com",
-           comment_syntax = "#>") {
+           comment_syntax = "#<") {
     if (is.na(name)) {
       name <- infile
     }
@@ -31,7 +31,7 @@ monitor <-
 
     # extract expressions
     expressions <- extract_expressions(lines)
-    
+
     # generate Job ID
     job_id <- NA
     res <- monitauR::init(API_URL, name)
