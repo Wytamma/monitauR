@@ -47,7 +47,7 @@ extract_steps_as_futures <-
 
 
 extract_expressions <- function(lines) {
-  exprs <- base::parse(text = paste(lines))
+  exprs <- base::parse(text =  lines, keep.source = TRUE)
   expressions <- list()
   for (i in 1:length(exprs)) {
     e <- exprs[i]

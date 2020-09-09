@@ -33,6 +33,5 @@ end <- function(API_URL, job_id) {
 error <- function(API_URL, job_id, msg) {
   URL <- sprintf('%s/jobs/%s/error', API_URL, job_id)
   res <- httr::POST(URL, query = list(msg = msg))
-  print(res)
   invisible(res)
 }

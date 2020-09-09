@@ -1,4 +1,4 @@
-evaluate_expressions  <- function(expressions, job_id) {
+evaluate_expressions  <- function(expressions, job_id, API_URL) {
   n <- length(expressions)
   for (i in seq_len(n)) {
     if (typeof(expressions[[i]]) == "environment") {

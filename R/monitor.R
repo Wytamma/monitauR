@@ -31,7 +31,7 @@ monitor <-
 
     # extract expressions
     expressions <- extract_expressions(lines)
-
+    
     # generate Job ID
     job_id <- NA
     res <- monitauR::init(API_URL, name)
@@ -44,7 +44,6 @@ monitor <-
     # extract futures
     futures <-
       extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
-
     # combine
     expressions <- c(expressions, futures)
 
@@ -53,7 +52,7 @@ monitor <-
 
     # eval
     monitauR::start(API_URL, job_id)
-    evaluate_expressions(expressions, job_id)
+    evaluate_expressions(expressions, job_id, API_URL)
     monitauR::end(API_URL, job_id)
     message(sprintf('Job %s: --- Finished ---', job_id))
     invisible()
