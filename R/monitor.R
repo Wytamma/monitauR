@@ -42,8 +42,17 @@ monitor <-
     message(sprintf('Job %s: --- Initialised ---', job_id))
 
     # extract futures
-    futures <-
-      extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
+    tryCatch({
+      futures <-
+        extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
+    },
+    error = function(e) {
+      # log error
+      message(sprintf('Job %s: --- ERROR ---', job_id))
+      monitauR::error(API_URL, job_id, e$message)
+      stop(e)
+    })
+
     # combine
     expressions <- c(expressions, futures)
 
