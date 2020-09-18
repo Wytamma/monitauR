@@ -11,7 +11,7 @@ extract_steps_as_futures <-
       if (!startsWith(line, comment_syntax)) {
         next
       }
-      steps[[as.character(i)]] <- line
+      steps[[sprintf("%02d", i)]] <- line
     }
     if (length(steps) == 0) {
       stop(sprintf(
@@ -52,7 +52,7 @@ extract_expressions <- function(lines) {
   for (i in 1:length(exprs)) {
     e <- exprs[i]
     srcref <- attr(e, "srcref")[[1]][1]
-    expressions[as.character(srcref)] <- e
+    expressions[sprintf("%02d", srcref)] <- e
   }
   return(expressions)
 }
