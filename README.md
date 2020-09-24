@@ -81,7 +81,7 @@ While evaluating the script when the special comment (`#<`) is reached a request
 4. Job status is set to running
 5. Script is evaluated and futures are run in sequential order 
 6. Any errors are caught and sent to the server (status set to error)
-6. When the script completes the Job status is set to finished
+7. When the script completes the Job status is set to finished
 
 ## monitauR-api
 
