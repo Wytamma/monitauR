@@ -1,4 +1,4 @@
-# monitauR <a href='https://github.com/wytamma'><img src='images/logo.png' align="right" height="210" /></a>
+# monitauR <img src='images/logo.png' align="right" height="210" />
 
 A package to easily and remotely monitor the progress of your R scripts.
 
