@@ -26,6 +26,7 @@ Rscript -e "monitauR::monitor('example_scripts/square.R')"
 ```
 ```
 Job 1: --- Initialised ---
+Job 1: https://blog.wytamma.com/monitauR-webapp/jobs
 Job 1: Setting up the square function (1/2)
 Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
