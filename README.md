@@ -83,6 +83,26 @@ While evaluating the script when the special comment (`#<`) is reached a request
 6. Any errors are caught and sent to the server (status set to error)
 7. When the script completes the Job status is set to finished
 
+## Use monitauR in a script
+
+Alternatively you can include a call to `monitauR::monitor()` at the top of your script and run the script normally with `Rscript example_scripts/square.R`
+
+```R
+monitauR::monitor()
+#< Setting up the square function
+square <- function(x) {
+  x*x
+}
+#< Computing the square
+square(5)
+```
+```
+Job 2: --- Initialised ---
+Job 2: Setting up the square function (1/2)
+Job 2: Computing the square (2/2)
+Job 2: --- Finished ---
+```
+
 ## monitauR-api
 
 Details for the default plumber api can be found [here](https://github.com/Wytamma/monitauR-api). However, the default api is shared and anyone can add to or edit the data on there, and the data might be wiped at any point. If you want your own private server you could deploy your own API and replace the `API_URL` pram in `monitauR::monitor`.

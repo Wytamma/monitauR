@@ -51,6 +51,9 @@ extract_expressions <- function(lines) {
   expressions <- list()
   for (i in 1:length(exprs)) {
     e <- exprs[i]
+    if (any(startsWith(deparse(e), "expression(monitauR::monitor"))) {
+      next
+    }
     srcref <- attr(e, "srcref")[[1]][1]
     expressions[sprintf("%02d", srcref)] <- e
   }

@@ -15,12 +15,16 @@
 #' @return The result of the script.
 #' @export
 monitor <-
-  function(infile,
+  function(infile = NA,
            name = NA,
            API_URL = "https://monitaur-api.herokuapp.com",
            comment_syntax = "#<") {
+
+    if (is.na(infile)) {
+      infile <- this.path::this.path()
+    }
     if (is.na(name)) {
-      name <- infile
+      name <- basename(infile)
     }
     if (endsWith(API_URL, '/')) {
       API_URL <- substr(API_URL, 0, nchar(API_URL) - 1)
@@ -40,7 +44,7 @@ monitor <-
       stop('job_id is not defined')
     }
     message(sprintf('Job %s: --- Initialised ---', job_id))
-
+    message(sprintf('Job %s: https://monitaur-api.herokuapp.com/jobs/%s', job_id, job_id))
     # extract futures
     tryCatch({
       futures <-
