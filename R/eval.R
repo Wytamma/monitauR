@@ -9,7 +9,7 @@ evaluate_expressions  <- function(expressions, job_id, API_URL) {
       }, error = function(e) {
         # log error
         message(sprintf('Job %s: --- ERROR ---', job_id))
-        monitauR::error(API_URL, job_id, e$message)
+        monitauR:::error(API_URL, job_id, e$message)
         stop(e)
       })
     }
