@@ -61,7 +61,7 @@ monitor <-
     expressions <- c(expressions, futures)
 
     # sort
-    expressions <- expressions[order(names(expressions))]
+    expressions <- expressions[sprintf( "%02d", sort(as.numeric(names(expressions))))]
 
     # eval
     monitauR:::start(API_URL, job_id)
