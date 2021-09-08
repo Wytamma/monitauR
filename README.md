@@ -19,7 +19,7 @@ square <- function(x) {
 square(5)
 ```
 
-The `#<` comments are special comments that tell monitauR to log these steps. The comment syntaxt can be changed using the `comment_syntax` option in `monitauR::monitor` e.g. `monitauR::monitor('example_scripts/square.R', comment_syntax="#")` to log normal comments. 
+The `#<` comments are special comments that tell monitauR to log these steps. The comment syntaxt can be changed using the `comment_syntax` option in `monitauR::monitor` e.g. `monitauR::monitor('example_scripts/square.R', comment_syntax="#")` to log normal comments. A name for the script can be specified with the `name` option e.g. `monitauR::monitor('example_scripts/square.R', name="cool script")`.
 
 ```bash
 Rscript -e "monitauR::monitor('example_scripts/square.R')"
