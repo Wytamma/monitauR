@@ -44,7 +44,7 @@ monitor <-
       stop('job_id is not defined')
     }
     message(sprintf('Job %s: --- Initialised ---', job_id))
-    message(sprintf('Job %s: https://monitaur-api.herokuapp.com/jobs/%s', job_id, job_id))
+    message(sprintf('Job %s: https://blog.wytamma.com/monitauR-webapp/jobs/', job_id))
     # extract futures
     tryCatch({
       futures <-
