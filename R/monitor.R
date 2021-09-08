@@ -38,7 +38,7 @@ monitor <-
 
     # generate Job ID
     job_id <- NA
-    res <- monitauR::init(API_URL, name)
+    res <- monitauR:::init(API_URL, name)
     job_id <- httr::content(res)[[1]]$id
     if (is.na(job_id)) {
       stop('job_id is not defined')
@@ -53,7 +53,7 @@ monitor <-
     error = function(e) {
       # log error
       message(sprintf('Job %s: --- ERROR ---', job_id))
-      monitauR::error(API_URL, job_id, e$message)
+      monitauR:::error(API_URL, job_id, e$message)
       stop(e)
     })
 
@@ -64,9 +64,9 @@ monitor <-
     expressions <- expressions[order(names(expressions))]
 
     # eval
-    monitauR::start(API_URL, job_id)
+    monitauR:::start(API_URL, job_id)
     evaluate_expressions(expressions, job_id, API_URL)
-    monitauR::end(API_URL, job_id)
+    monitauR:::end(API_URL, job_id)
     message(sprintf('Job %s: --- Finished ---', job_id))
     invisible()
   }
