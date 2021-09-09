@@ -20,8 +20,10 @@ monitor <-
            API_URL = "https://monitaur-api.herokuapp.com",
            comment_syntax = "#<") {
 
+    internal <- FALSE
     if (is.na(infile)) {
       infile <- this.path::this.path()
+      internal <- TRUE
     }
     if (is.na(name)) {
       name <- basename(infile)
@@ -68,5 +70,13 @@ monitor <-
     evaluate_expressions(expressions, job_id, API_URL)
     monitauR:::end(API_URL, job_id)
     message(sprintf('Job %s: --- Finished ---', job_id))
+    if (internal) {
+      exit()
+    }
     invisible()
   }
+
+
+exit <- function() {
+  .Internal(.invokeRestart(list(NULL, NULL), NULL))
+}
