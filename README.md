@@ -1,6 +1,6 @@
 # monitauR <img src='images/logo.png' align="right" height="210" />
 
-A package to easily and remotely monitor the progress of your R scripts.
+Easily and remotely monitor the progress of your R scripts.
 
 ```R
 devtools::install_github("wytamma/monitauR")
