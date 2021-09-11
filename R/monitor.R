@@ -35,6 +35,21 @@ monitor <-
     # read script
     lines <- readLines(infile)
 
+    # check for comment syntax
+    found <- FALSE
+    for (i in 1:length(lines)) {
+      line <- lines[i]
+      if (startsWith(line, comment_syntax)) {
+        found <- TRUE
+        break
+      }
+    }
+    if (!found) {
+      stop(sprintf(
+        'Could not find monituaR style comments (%s) in the file.',
+        comment_syntax
+      ))
+    }
     # extract expressions
     expressions <- extract_expressions(lines)
 
