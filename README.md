@@ -22,9 +22,8 @@ square(5)
 The `#<` comments are special comments that tell monitauR to log these steps. 
 
 ```bash
-Rscript -e "monitauR::monitor('example_scripts/square.R')"
-```
-```
+$ Rscript -e "monitauR::monitor('example_scripts/square.R')"
+
 Job 1: --- Initialised ---
 Job 1: https://blog.wytamma.com/monitauR-webapp/jobs
 Job 1: Setting up the square function (1/2)
@@ -43,7 +42,10 @@ square <- function(x) {
 #< Computing the square
 square(5)
 ```
-```
+
+```bash
+$ Rscript example_scripts/square.R
+
 Job 2: --- Initialised ---
 Job 2: https://blog.wytamma.com/monitauR-webapp/jobs
 Job 2: Setting up the square function (1/2)
