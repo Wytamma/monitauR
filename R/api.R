@@ -5,7 +5,7 @@ init <- function(API_URL, job_name) {
   if (typeof(httr::content(res)) != "list") {
     stop('Malformed response. POST <API_URL>/jobs should return a list.')
   }
-  invisible(res)
+  invisible(httr::content(res)[[1]]$id)
 }
 
 #' @export

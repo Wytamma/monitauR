@@ -55,8 +55,7 @@ monitor <-
 
     # generate Job ID
     job_id <- NA
-    res <- monitauR:::init(API_URL, name)
-    job_id <- httr::content(res)[[1]]$id
+    job_id <- monitauR:::init(API_URL, name)
     if (is.na(job_id)) {
       stop('job_id is not defined')
     }
