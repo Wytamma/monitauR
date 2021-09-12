@@ -1,6 +1,6 @@
 # monitauR <img src='images/logo.png' align="right" height="210" />
 
-A package to easily and remotely monitor the progress of your R scripts.
+Easily and remotely monitor the progress of your R scripts.
 
 ```R
 devtools::install_github("wytamma/monitauR")
@@ -22,17 +22,14 @@ square(5)
 The `#<` comments are special comments that tell monitauR to log these steps. 
 
 ```bash
-Rscript -e "monitauR::monitor('example_scripts/square.R')"
-```
-```
+$ Rscript -e "monitauR::monitor('example_scripts/square.R')"
+
 Job 1: --- Initialised ---
 Job 1: https://blog.wytamma.com/monitauR-webapp/jobs
 Job 1: Setting up the square function (1/2)
 Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
 ```
-
-The comment syntax can be changed using the `comment_syntax` option in `monitauR::monitor` e.g. `monitauR::monitor('example_scripts/square.R', comment_syntax="#")` to log normal comments. A name for the script can be specified with the `name` option e.g. `monitauR::monitor('example_scripts/square.R', name="cool script")`. 
 
 Alternatively, you can include a call to `monitauR::monitor()` at the top of the script and run the script normally with `$ Rscript example_scripts/square.R` or `> source("example_scripts/square.R")`
 
@@ -45,8 +42,12 @@ square <- function(x) {
 #< Computing the square
 square(5)
 ```
-```
+
+```bash
+$ Rscript example_scripts/square.R
+
 Job 2: --- Initialised ---
+Job 2: https://blog.wytamma.com/monitauR-webapp/jobs
 Job 2: Setting up the square function (1/2)
 Job 2: Computing the square (2/2)
 Job 2: --- Finished ---
@@ -92,6 +93,8 @@ curl 'https://monitaur-api.herokuapp.com/steps' | json_pp
    }
 ]
 ```
+
+The comment syntax can be changed using the `comment_syntax` option in `monitauR::monitor` e.g. `monitauR::monitor('example_scripts/square.R', comment_syntax="#")` to log normal comments. A name for the script can be specified with the `name` option e.g. `monitauR::monitor('example_scripts/square.R', name="cool script")`. 
 
 ## Explanation 
 
