@@ -64,16 +64,16 @@ monitor <-
     if (is.na(job_id)) {
       stop('job_id is not defined')
     }
-    message(sprintf('Job %s: --- Initialised ---', job_id))
-    message(sprintf('Job %s: https://blog.wytamma.com/monitauR-webapp/jobs?token=%s', job_id, token))
+    message(sprintf('%s: --- Initialised ---', name))
+    message(sprintf('%s: https://blog.wytamma.com/monitauR-webapp/jobs?token=%s', name, token))
     # extract futures
     tryCatch({
       futures <-
-        monitauR:::extract_steps_as_futures(lines, token, job_id, comment_syntax, API_URL)
+        monitauR:::extract_steps_as_futures(lines, token, job_id, name, comment_syntax, API_URL)
     },
     error = function(e) {
       # log error
-      message(sprintf('Job %s: --- ERROR ---', job_id))
+      message(sprintf('%s: --- ERROR ---', name))
       monitauR:::error(token, API_URL, job_id, e$message)
       stop(e)
     })
@@ -86,9 +86,9 @@ monitor <-
 
     # eval
     monitauR:::start(token, API_URL, job_id)
-    evaluate_expressions(expressions, token, job_id, API_URL)
+    evaluate_expressions(expressions, token, job_id, name, API_URL)
     monitauR:::end(token, API_URL, job_id)
-    message(sprintf('Job %s: --- Finished ---', job_id))
+    message(sprintf('%s: --- Finished ---', name))
     if (internal) {
       exit()
     }

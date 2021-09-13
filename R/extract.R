@@ -2,6 +2,7 @@ extract_steps_as_futures <-
   function(lines,
            token,
            job_id,
+           name,
            comment_syntax,
            API_URL,
            STOP_ON_ERROR = FALSE) {
@@ -29,7 +30,7 @@ extract_steps_as_futures <-
       f <- future::future({
         tryCatch({
           # do smarter checking for response status
-          message(sprintf('Job %s: %s (%s/%s)', job_id, msg, i, length(steps)))
+          message(sprintf('%s: %s (%s/%s)', name, msg, i, length(steps)))
           monitauR:::step(token = token,
                           API_URL = API_URL,
                          job_id = job_id,
