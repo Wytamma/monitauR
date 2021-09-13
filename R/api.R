@@ -1,7 +1,7 @@
 #' @export
-init <- function(API_URL, job_name) {
+init <- function(token, API_URL, job_name) {
   URL <- sprintf('%s/jobs', API_URL)
-  res <- httr::POST(URL, query = list(msg = job_name))
+  res <- httr::POST(URL, query = list(msg = job_name, user_token = token))
   if (typeof(httr::content(res)) != "list") {
     stop('Malformed response. POST <API_URL>/jobs should return a list.')
   }
@@ -9,29 +9,29 @@ init <- function(API_URL, job_name) {
 }
 
 #' @export
-start <- function(API_URL, job_id) {
+start <- function(token, API_URL, job_id) {
   URL <- sprintf('%s/jobs/%s/start', API_URL, job_id)
-  res <- httr::POST(URL)
+  res <- httr::POST(URL, query = list(user_token = token))
   invisible(res)
 }
 
 #' @export
-step <- function(API_URL, job_id, msg) {
+step <- function(token, API_URL, job_id, msg) {
   URL <- sprintf('%s/steps', API_URL)
-  res <- httr::POST(URL, query = list(msg = msg, job_id = job_id))
+  res <- httr::POST(URL, query = list(msg = msg, job_id = job_id, user_token = token))
   invisible(res)
 }
 
 #' @export
-end <- function(API_URL, job_id) {
+end <- function(token, API_URL, job_id) {
   URL <- sprintf('%s/jobs/%s/end', API_URL, job_id)
-  res <- httr::POST(URL)
+  res <- httr::POST(URL, query = list(user_token = token))
   invisible(res)
 }
 
 #' @export
-error <- function(API_URL, job_id, msg) {
+error <- function(token, API_URL, job_id, msg) {
   URL <- sprintf('%s/jobs/%s/error', API_URL, job_id)
-  res <- httr::POST(URL, query = list(msg = msg))
+  res <- httr::POST(URL, query = list(msg = msg, user_token = token))
   invisible(res)
 }

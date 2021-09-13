@@ -1,4 +1,4 @@
-evaluate_expressions  <- function(expressions, job_id, API_URL) {
+evaluate_expressions  <- function(expressions, token, job_id, API_URL) {
   n <- length(expressions)
   for (i in seq_len(n)) {
     if (typeof(expressions[[i]]) == "environment") {
@@ -9,7 +9,7 @@ evaluate_expressions  <- function(expressions, job_id, API_URL) {
       }, error = function(e) {
         # log error
         message(sprintf('Job %s: --- ERROR ---', job_id))
-        monitauR:::error(API_URL, job_id, e$message)
+        monitauR:::error(token, API_URL, job_id, e$message)
         stop(e)
       })
     }

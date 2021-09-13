@@ -25,7 +25,7 @@ The `#<` comments are special comments that tell monitauR to log these steps.
 $ Rscript -e "monitauR::monitor('example_scripts/square.R')"
 
 Job 1: --- Initialised ---
-Job 1: https://blog.wytamma.com/monitauR-webapp/jobs
+Job 1: https://blog.wytamma.com/monitauR-webapp/jobs?token=02d73eed-bdae-411e-99a6-885121a42c2b
 Job 1: Setting up the square function (1/2)
 Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
@@ -47,13 +47,15 @@ square(5)
 $ Rscript example_scripts/square.R
 
 Job 2: --- Initialised ---
-Job 2: https://blog.wytamma.com/monitauR-webapp/jobs
+Job 2: https://blog.wytamma.com/monitauR-webapp/jobs?token=4e814983-a675-4d07-9789-6a3b4f187867
 Job 2: Setting up the square function (1/2)
 Job 2: Computing the square (2/2)
 Job 2: --- Finished ---
 ```
 
-The scripts are logged to an api [https://monitaur-api.herokuapp.com/jobs](https://monitaur-api.herokuapp.com/jobs) and can be view using the web app at [https://blog.wytamma.com/monitauR-webapp/jobs](https://blog.wytamma.com/monitauR-webapp/jobs).
+The scripts are logged to an api [https://monitaur-api.herokuapp.com/jobs](https://monitaur-api.herokuapp.com/jobs) and can be view using the web app at [https://blog.wytamma.com/monitauR-webapp/jobs](https://blog.wytamma.com/monitauR-webapp/jobs). 
+
+MonitauR will create a unique random `token` e.g. `4e814983-a675-4d07-9789-6a3b4f187867` this token is required to access the logs. Tokens can be used to group jobs together by specifying them in `monitauR::monitor(token="4e814983-a675-4d07-9789-6a3b4f187867")` all jobs using this token will show up on the same jobs page. You can set the token to anything* however, setting it to something simple may clash with other tokens.
 
 [![webapp](images/webapp.png)](https://blog.wytamma.com/monitauR-webapp/jobs/)
 

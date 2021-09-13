@@ -17,6 +17,7 @@
 monitor <-
   function(infile = NA,
            name = NA,
+           token = NA,
            API_URL = "https://monitaur-api.herokuapp.com",
            comment_syntax = "#<") {
 
@@ -30,6 +31,10 @@ monitor <-
     }
     if (endsWith(API_URL, '/')) {
       API_URL <- substr(API_URL, 0, nchar(API_URL) - 1)
+    }
+
+    if (is.na(token)) {
+      token <- create_token()
     }
 
     # read script
@@ -55,21 +60,21 @@ monitor <-
 
     # generate Job ID
     job_id <- NA
-    job_id <- monitauR:::init(API_URL, name)
+    job_id <- monitauR:::init(token, API_URL, name)
     if (is.na(job_id)) {
       stop('job_id is not defined')
     }
     message(sprintf('Job %s: --- Initialised ---', job_id))
-    message(sprintf('Job %s: https://blog.wytamma.com/monitauR-webapp/jobs/', job_id))
+    message(sprintf('Job %s: https://blog.wytamma.com/monitauR-webapp/jobs?token=%s', job_id, token))
     # extract futures
     tryCatch({
       futures <-
-        extract_steps_as_futures(lines, job_id, comment_syntax, API_URL)
+        monitauR:::extract_steps_as_futures(lines, token, job_id, comment_syntax, API_URL)
     },
     error = function(e) {
       # log error
       message(sprintf('Job %s: --- ERROR ---', job_id))
-      monitauR:::error(API_URL, job_id, e$message)
+      monitauR:::error(token, API_URL, job_id, e$message)
       stop(e)
     })
 
@@ -80,9 +85,9 @@ monitor <-
     expressions <- expressions[sprintf( "%02d", sort(as.numeric(names(expressions))))]
 
     # eval
-    monitauR:::start(API_URL, job_id)
-    evaluate_expressions(expressions, job_id, API_URL)
-    monitauR:::end(API_URL, job_id)
+    monitauR:::start(token, API_URL, job_id)
+    evaluate_expressions(expressions, token, job_id, API_URL)
+    monitauR:::end(token, API_URL, job_id)
     message(sprintf('Job %s: --- Finished ---', job_id))
     if (internal) {
       exit()
@@ -90,6 +95,10 @@ monitor <-
     invisible()
   }
 
+
+create_token <- function() {
+  uuid::UUIDgenerate()
+}
 
 exit <- function() {
   .Internal(.invokeRestart(list(NULL, NULL), NULL))
