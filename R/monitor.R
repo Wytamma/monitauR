@@ -10,6 +10,7 @@
 #'
 #' @param infile Path to the input file
 #' @param name Name of job (defaults to infile)
+#' @param token Token for grouping jobs (defaults to uuid)
 #' @param comment_syntax Special comment syntax (defaults to #<)
 #' @param API_URL Base url of the remote server
 #' @return The result of the script.

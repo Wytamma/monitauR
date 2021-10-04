@@ -4,12 +4,20 @@
 \alias{monitor}
 \title{Monitor the progress of a script}
 \usage{
-monitor(infile, job_name = NA, API_URL, comment_syntax = "#<")
+monitor(
+  infile = NA,
+  name = NA,
+  token = NA,
+  API_URL = "https://monitaur-api.herokuapp.com",
+  comment_syntax = "#<"
+)
 }
 \arguments{
 \item{infile}{Path to the input file}
 
-\item{job_name}{Name of job (defaults to infile)}
+\item{name}{Name of job (defaults to infile)}
+
+\item{token}{Token for grouping jobs (defaults to uuid)}
 
 \item{API_URL}{Base url of the remote server}
 
