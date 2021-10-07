@@ -1,6 +1,6 @@
 Package: monitauR
 Title: Remotely Monitor Script Progress
-Version: 1.2
+Version: 1.3
 Authors@R: 
     person(given = "Wytamma",
            family = "Wirth",
