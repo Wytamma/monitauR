@@ -55,48 +55,29 @@ Job 2: --- Finished ---
 
 The scripts are logged to an api [https://monitaur-api.herokuapp.com/jobs](https://monitaur-api.herokuapp.com/jobs) and can be view using the web app at [https://blog.wytamma.com/monitauR-webapp/jobs](https://blog.wytamma.com/monitauR-webapp/jobs). 
 
-MonitauR will create a unique random `token` e.g. `4e814983-a675-4d07-9789-6a3b4f187867` this token is required to access the logs. Tokens can be used to group jobs together by specifying them in `monitauR::monitor(token="4e814983-a675-4d07-9789-6a3b4f187867")` all jobs using this token will show up on the same jobs page. You can set the token to anything* however, setting it to something simple may clash with other tokens.
-
 [![webapp](images/webapp.png)](https://blog.wytamma.com/monitauR-webapp/jobs/)
 
-```bash
-curl 'https://monitaur-api.herokuapp.com/jobs' | json_pp
-```
-```json
-[
-   {
-      "created" : "2020-09-07 14:49:35",
-      "id" : 1,
-      "name" : "example_scripts/square.R",
-      "status" : "finished",
-      "updated" : "2020-09-07 14:49:35"
-   }
-]
-```
-```bash
-curl 'https://monitaur-api.herokuapp.com/steps' | json_pp
+## Tokens
 
-```
-```json
-[
-   {
-      "created" : "2020-09-07 14:49:35",
-      "id" : 1,
-      "job_id" : 1,
-      "msg" : "Setting up the square function",
-      "updated" : "2020-09-07 14:49:35"
-   },
-   {
-      "created" : "2020-09-07 14:49:35",
-      "id" : 2,
-      "job_id" : 1,
-      "msg" : "Computing the square",
-      "updated" : "2020-09-07 14:49:35"
-   }
-]
-```
+MonitauR will create a unique random `token` e.g. `4e814983-a675-4d07-9789-6a3b4f187867` this token is required to access the logs. Tokens can be used to group jobs together by specifying them in `monitauR::monitor(token="4e814983-a675-4d07-9789-6a3b4f187867")` all jobs using this token will show up on the same jobs page. You can set the token to anything* however, setting it to something simple may clash with other tokens.
+
+## Comment Syntax
 
 The comment syntax can be changed using the `comment_syntax` option in `monitauR::monitor` e.g. `monitauR::monitor('example_scripts/square.R', comment_syntax="#")` to log normal comments. A name for the script can be specified with the `name` option e.g. `monitauR::monitor('example_scripts/square.R', name="cool script")`. 
+
+## Expression comments
+
+Expression can be used in monitauR comments by wrapping them in `{}`. For example the last line of the script below will send 'The result is 25' to the server. 
+
+```R
+#< Setting up the square function
+square <- function(x) {
+  x*x
+}
+#< Computing the square
+res <- square(5)
+#< { sprintf("The result is %s", res) }
+```
 
 ## Explanation 
 

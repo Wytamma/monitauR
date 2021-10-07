@@ -26,9 +26,18 @@ extract_steps_as_futures <-
       step <- steps[i]
       msg <-
         trimws(substr(step, nchar(comment_syntax) + 1, nchar(step)))
+      MONITAUR_EXPRESSION <- FALSE
+      if (length(grep("^\\{.*\\}$", msg)) > 0) {
+        MONITAUR_EXPRESSION <- TRUE
+      }
       # create step future
       f <- future::future({
         tryCatch({
+          if (MONITAUR_EXPRESSION) {
+            STOP_ON_ERROR <- TRUE
+            msg <- toString(eval(str2expression(msg)))
+            STOP_ON_ERROR <- FALSE
+          }
           # do smarter checking for response status
           message(sprintf('%s: %s (%s/%s)', name, msg, i, length(steps)))
           monitauR:::step(token = token,
