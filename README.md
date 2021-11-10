@@ -67,7 +67,7 @@ The comment syntax can be changed using the `comment_syntax` option in `monitauR
 
 ## Expression comments
 
-Expression can be used in monitauR comments by wrapping them in `{}`. For example the last line of the script below will send 'The result is 25' to the server. 
+Expressions can be used in monitauR comments by wrapping them in `{}`. For example the last line of the script below will send 'The result is 25' to the server. 
 
 ```R
 #< Setting up the square function
