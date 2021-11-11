@@ -53,7 +53,7 @@ Job 2: Computing the square (2/2)
 Job 2: --- Finished ---
 ```
 
-The scripts are logged to an api [https://monitaur-api.herokuapp.com/jobs](https://monitaur-api.herokuapp.com/jobs) and can be view using the web app at [https://blog.wytamma.com/monitauR-webapp/jobs](https://blog.wytamma.com/monitauR-webapp/jobs). 
+The steps are logged to a web-api and can be viewed using the web-app at [https://blog.wytamma.com/monitauR-webapp/jobs](https://blog.wytamma.com/monitauR-webapp/jobs). 
 
 [![webapp](images/webapp.png)](https://blog.wytamma.com/monitauR-webapp/jobs/)
 
