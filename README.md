@@ -59,7 +59,7 @@ The steps are logged to a web-api and can be viewed using the web-app at [https:
 
 ## Tokens
 
-MonitauR will create a unique random `token` e.g. `4e814983-a675-4d07-9789-6a3b4f187867` this token is required to access the logs. Tokens can be used to group jobs together by specifying them in `monitauR::monitor(token="4e814983-a675-4d07-9789-6a3b4f187867")` all jobs using this token will show up on the same jobs page. You can set the token to anything* however, setting it to something simple may clash with other tokens.
+MonitauR will create a unique random `token` e.g. `4e814983-a675-4d07-9789-6a3b4f187867` this token is required to access the logs. Tokens can be used to group jobs together by specifying them in `monitauR::monitor(token="my-project-token")` all jobs using this token will show up on the same jobs page. You can set the token to anything* however, setting it to something simple may clash with other tokens.
 
 ## Comment Syntax
 
