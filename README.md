@@ -79,6 +79,14 @@ res <- square(5)
 #< { sprintf("The result is %s", res) }
 ```
 
+## Emails (experimental)
+
+Using the `email` argument you can get the monitauR-api to send you emails when your job finishes/errors.
+
+```bash
+monitauR::monitor('example_scripts/square.R', email="wytamma.wirth@me.com")
+```
+
 ## Explanation 
 
 There is a [plumber api](https://www.rplumber.io/) running on [https://monitaur-api.herokuapp.com/](https://monitaur-api.herokuapp.com/) that receives and logs requests from `monitauR::monitor`. The script infile (`example_scripts/square.R`) has a special comment syntax (`#<`) that tells `monitauR::monitor` when to send a logging request. 

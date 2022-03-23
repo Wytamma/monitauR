@@ -11,6 +11,7 @@
 #' @param infile Path to the input file
 #' @param name Name of job (defaults to infile)
 #' @param token Token for grouping jobs (defaults to uuid)
+#' @param email Email to send notifications
 #' @param comment_syntax Special comment syntax (defaults to #<)
 #' @param API_URL Base url of the remote server
 #' @return The result of the script.
@@ -91,7 +92,7 @@ monitor <-
 
     # eval
     monitauR:::start(token, API_URL, job_id)
-    evaluate_expressions(expressions, token, job_id, name, API_URL)
+    monitauR:::evaluate_expressions(expressions, token, job_id, name, API_URL)
     monitauR:::end(token, API_URL, job_id)
     message(sprintf('%s: --- Finished ---', name))
     if (internal) {
