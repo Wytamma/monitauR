@@ -15,7 +15,11 @@ evaluate_expressions  <- function(expressions, token, job_id, name, API_URL) {
         message(sprintf('%s: --- ERROR ---', name))
         monitauR:::error(token, API_URL, job_id, e$message)
         stop(e)
-    })
+      }, interrupt = function(e) {
+        message(sprintf('%s: --- CANCELED ---', name))
+        monitauR:::error(token, API_URL, job_id, 'CANCELED')
+        rlang::interrupt()
+      })
   }
   invisible()
 }

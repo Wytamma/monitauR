@@ -8,6 +8,7 @@ monitor(
   infile = NA,
   name = NA,
   token = NA,
+  email = NA,
   API_URL = "https://monitaur-api.herokuapp.com",
   comment_syntax = "#<"
 )
@@ -18,6 +19,8 @@ monitor(
 \item{name}{Name of job (defaults to infile)}
 
 \item{token}{Token for grouping jobs (defaults to uuid)}
+
+\item{email}{Email to send notifications}
 
 \item{API_URL}{Base url of the remote server}
 
