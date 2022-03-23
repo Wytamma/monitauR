@@ -31,7 +31,7 @@ Job 1: Computing the square (2/2)
 Job 1: --- Finished ---
 ```
 
-Alternatively, you can include a call to `monitauR::monitor()` at the top of the script and run the script normally with `$ Rscript example_scripts/square.R` or `> source("example_scripts/square.R")`
+Alternatively, you can include a call to `monitauR::monitor()` at the top of the script and run the script normally with `$ Rscript example_scripts/square.R` or `> source("example_scripts/square.R")`. NOTE: if you are running the script interativly (i.e. line by line) then you only need to run the the first line i.e. `monitauR::monitor()`. Monitor will automatically run the rest of your script (just make use it's saved).
 
 ```R
 monitauR::monitor()
