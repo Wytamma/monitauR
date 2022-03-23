@@ -1,4 +1,3 @@
-monitauR::monitor(name="Sleep Script", token="monitauR")
 #< Sleeping for 1 seconds
 Sys.sleep(1)
 #< Sleeping for 2 seconds
