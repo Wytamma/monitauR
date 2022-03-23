@@ -19,6 +19,7 @@ monitor <-
   function(infile = NA,
            name = NA,
            token = NA,
+           email = NA,
            API_URL = "https://monitaur-api.herokuapp.com",
            comment_syntax = "#<") {
 
@@ -61,11 +62,14 @@ monitor <-
 
     # generate Job ID
     job_id <- NA
-    job_id <- monitauR:::init(token, API_URL, name)
+    job_id <- monitauR:::init(token, API_URL, name, email)
     if (is.na(job_id)) {
       stop('job_id is not defined')
     }
     message(sprintf('%s: --- Initialised ---', name))
+    if (!is.na(email)) {
+      message(sprintf('%s: Sending email updates to: %s', name, email))
+    }
     message(sprintf('%s: https://blog.wytamma.com/monitauR-webapp/jobs?token=%s', name, token))
     # extract futures
     tryCatch({

@@ -1,7 +1,10 @@
 #' @export
-init <- function(token, API_URL, job_name) {
+init <- function(token, API_URL, job_name, email) {
+  if (is.na(email)) {
+    email <- NULL
+  }
   URL <- sprintf('%s/jobs', API_URL)
-  res <- httr::POST(URL, query = list(msg = job_name, user_token = token))
+  res <- httr::POST(URL, query = list(msg = job_name, user_token = token, email = email))
   if (typeof(httr::content(res)) != "list") {
     stop('Malformed response. POST <API_URL>/jobs should return a list.')
   }
